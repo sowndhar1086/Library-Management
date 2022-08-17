@@ -8,6 +8,4 @@ Tools used in Project:
 
 Testing is done in localhost(Chrome Browser).
 
-Material CSS and jQuery Commands are used.
-
-Hence active internet Connection is required.
+Material CSS and jQuery CDN are used,hence active internet Connection is required.
