@@ -1,9 +1,10 @@
 # Library-Management
-List of books and filter the books
+
+A simple library Management System
 
 Tools used in Project:
-  1. VS Code
-  2.Live Server
+1. VS Code
+2.Live Server
 
 Testing is done in localhost(Chrome Browser).
 
