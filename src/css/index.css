@@ -71,8 +71,12 @@ body, .app{
   align-items: center;
   padding: 20px;
   padding-bottom: 0px;
-  width: 80%;
-  
+}
+.rowSearch{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 }
 /* end: Search */
 
