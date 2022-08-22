@@ -1,4 +1,4 @@
-//document.getElementById("search").addEventListener(onclick, filter(form));
+
 
 
 function filter(form) {
@@ -6,12 +6,13 @@ function filter(form) {
 
   var bookName = form.bookName.value;
   var author = form.author.value;
-  search(bookName, author);
+  var year = form.year.value;
+  search(bookName, author,year);
   //return false;
 }
 
 
-function search(bookName, author) {
+function search(bookName, author,year) {
   let data='';
 
   //document.querySelector("result-container").innerHTML = " ";
@@ -20,23 +21,23 @@ function search(bookName, author) {
 
 
   //regex
-  var regexT = new RegExp(bookName);
-  var regexA = new RegExp(author);
-  var count = 0;
+  var regexT = new RegExp(bookName,"i");
+  var regexA = new RegExp(author,"i");
+  var regexB = new RegExp(year,"i");
 
   //json
   $.getJSON("./src/data/books.json", function(json) {
     book = json; 
-    
     for(var i = 0; i < book.length; i++){
       console.log(book[i].title)
       var matchesTitle = regexT.test(book[i].title);
       var matchesAuthor = regexA.test(book[i].author);
-
-      if (matchesTitle && matchesAuthor) {
+      var matchesYear = regexB.test(book[i].year);
+      
+      if (matchesTitle && matchesAuthor && matchesYear) {
         data = '        <div class="card">          <div class="card-image waves-effect waves-block waves-light">            <img class="activator" src="./'+book[i].imageLink+'">          </div>          <div class="card-content">            <span class="card-title activator grey-text text-darken-4">: '+ book[i].title +'<i class="material-icons right">more_vert</i></span>          </div>          <div class="card-reveal">            <i class="card-title material-icons right">close</i><br></i>            <span class="s6 title grey-text text-darken-4">Author:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].author+'</li>            </ul>                        <span class="s6 title grey-text text-darken-4">Book Name:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].title+'</li>            </ul>            <span class="s6 title grey-text text-darken-4">Published Year:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].year+'</li>            </ul>            <span class="s6 title grey-text text-darken-4">Country:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].country+'</li>            </ul>            <span class="s6 title grey-text text-darken-4">Pages:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].pages+'</li>            </ul>            <span class="s6 title grey-text text-darken-4">Language:</span>            <ul class="collection with-header">              <li class="collection-header">'+book[i].language+'</li>            </ul>            <p></p>          </div>        </div>';
+        //$('.result-container').empty();
         $('.result-container').append(data);
-        count++;
       }
       
     }
